@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema wandersafedb
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `wandersafedb` ;
 
 -- -----------------------------------------------------
 -- Schema wandersafedb
@@ -33,10 +34,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `wandersafedb`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `wandersafedb`.`user` (
-  `username` INT NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
   `contact_card_id` INT NOT NULL,
   PRIMARY KEY (`username`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_contact_card_idx` (`contact_card_id` ASC),
   CONSTRAINT `fk_user_contact_card`
     FOREIGN KEY (`contact_card_id`)
@@ -72,19 +72,19 @@ DROP TABLE IF EXISTS `wandersafedb`.`sos_event` ;
 
 CREATE TABLE IF NOT EXISTS `wandersafedb`.`sos_event` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `user_username` INT NOT NULL,
-  `contact_id` INT NOT NULL,
   `time` DATETIME NULL,
   `active` TINYINT NULL,
-  PRIMARY KEY (`id`, `user_username`, `contact_id`),
-  INDEX `fk_scheduled_event_user1_idx` (`user_username` ASC),
-  INDEX `fk_scheduled_event_contact1_idx` (`contact_id` ASC),
-  CONSTRAINT `fk_scheduled_event_user1`
+  `user_username` VARCHAR(45) NOT NULL,
+  `contact_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_sos_event_user1_idx` (`user_username` ASC),
+  INDEX `fk_sos_event_contact1_idx` (`contact_id` ASC),
+  CONSTRAINT `fk_sos_event_user1`
     FOREIGN KEY (`user_username`)
     REFERENCES `wandersafedb`.`user` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_scheduled_event_contact1`
+  CONSTRAINT `fk_sos_event_contact1`
     FOREIGN KEY (`contact_id`)
     REFERENCES `wandersafedb`.`contact` (`id`)
     ON DELETE NO ACTION
