@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.joethelinguist.wandersafe.models.SosEvent;
 
 @Repository
-public interface SosEventRepository extends JpaRepository<SosEvent, String> {
-	
-	
+public interface SosEventRepository extends JpaRepository<SosEvent, String> {	
 
 }
