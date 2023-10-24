@@ -18,10 +18,10 @@ public class SosEvent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
-	@JoinColumn(name="username")
+	@JoinColumn(name="user")
 	private User user;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="contact")
 	private Contact contact;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date time;
