@@ -1,7 +1,7 @@
 # WanderSafe
 
 ## Overview
-### WanderSafe is a platform for users to schedule SOS messages to emergency contacts. Messages can contain information such as location data or contingency plan instructions. Additionally, they can be recurring or one-time-only and can be disabled by the user at the press of a button. The advantage of having WanderSafe manage such messages rather than sending them upfront is that the user can maintain greater control of potentially sensitive information and, thus, can retain additional privacy, sharing information only if the user doesn't disable the message before it is scheduled to be sent.
+WanderSafe is a platform for users to schedule SOS messages to emergency contacts. Messages can contain information such as location data or contingency plan instructions. Additionally, they can be recurring or one-time-only and can be disabled by the user at the press of a button. The advantage of having WanderSafe manage such messages rather than sending them upfront is that the user can maintain greater control of potentially sensitive information and, thus, can retain additional privacy, sharing information only if the user doesn't disable the message before it is scheduled to be sent.
 
 ## Example Use Cases
 * Solo Hiking: A user can set a message to send an SOS to an emergency contact if they don't return from a solo hike within an estimated timeframe. The message can contain the location of the trail, the intended route, parking location, and other relevant information.
