@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joethelinguist.wandersafe.models.SosEvent;
-import com.joethelinguist.wandersafe.services.SosEventServiceImpl;
+import com.joethelinguist.wandersafe.services.SosEventService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -18,12 +18,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SosEventController {
 	
 	@Autowired
-	private SosEventServiceImpl sosEventServiceImpl;
+	private SosEventService sosEventService;
 	
 	@GetMapping("username/{username}")
 	private List<SosEvent> getAllByUsername(@PathVariable String username, HttpServletResponse response) {
 		response.setStatus(200);
-		return sosEventServiceImpl.getSosEventsByUsername(username);
+		return sosEventService.getSosEventsByUsername(username);
 	}
 
 }

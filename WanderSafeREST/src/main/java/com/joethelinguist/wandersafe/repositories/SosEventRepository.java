@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.joethelinguist.wandersafe.models.SosEvent;
 
-public interface SosEventRepository extends JpaRepository<SosEvent, String> {
+public interface SosEventRepository extends JpaRepository<SosEvent, Integer> {
 	
 	List<SosEvent> findAllByUserUsername(String username);
 
