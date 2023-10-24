@@ -6,6 +6,7 @@ WanderSafe is a platform for users to schedule SOS messages to emergency contact
 ## Example Use Cases
 * Solo Hiking: A user can set a message to send an SOS to an emergency contact if they don't return from a solo hike within an estimated timeframe. The message can contain the location of the trail, the intended route, parking location, and other relevant information.
 * Cross-Country Road Trip: A user can set a daily SOS to send if they don't check in. The SOS can contain the planned route, instructions for how to handle receipt of an SOS message, such as "Call me first, and if I don't respond, call the person I'm road tripping with. If they don't respond, call the police", and if desired, the user's last known location based on metadata from the user's last check-in.
+* Date Night: A user can schedule a message to prompt a friend to call or text and give them an excuse to leave a date if it is not going well. Alternatively, the user can schedule a text message to themselves for the same purpose.
 
 ## Technologies Used
 * Java
