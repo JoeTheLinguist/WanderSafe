@@ -1,9 +1,12 @@
 package com.joethelinguist.wandersafe.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ContactCard {
@@ -13,6 +16,12 @@ public class ContactCard {
 	private int id;
 	private String email;
 	private String phone;
+	@JsonIgnore
+	@OneToOne(mappedBy="contactCard")
+	private User user;
+	@JsonIgnore
+	@OneToOne(mappedBy="contactCard")
+	private Contact contact;
 
 	ContactCard() {
 		
@@ -46,5 +55,21 @@ public class ContactCard {
 	
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public Contact getContact() {
+		return contact;
+	}
+	
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
 }
