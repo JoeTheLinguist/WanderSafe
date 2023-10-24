@@ -6,37 +6,50 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class User {
-
+public class Contact {
+	
 	@Id
-	private String username;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String name;
 	private ContactCard contactCard;
 	@JsonIgnore
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="contact")
 	private List<SosEvent> sosEvents;
 	
-	User() {
-	
+	Contact() {
+		
 	}
 	
-	User(String username, ContactCard contactCard, List<SosEvent> sosEvents) {
-		this.username = username;
+	Contact(int id, String name, ContactCard contactCard, List<SosEvent> sosEvents) {
+		this.id = id;
+		this.name = name;
 		this.contactCard = contactCard;
 		this.sosEvents = sosEvents;
 	}
 	
-	public String getUsername() {
-		return this.username;
+	public int getId() {
+		return this.id;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public ContactCard getContactCard() {
 		return this.contactCard;
 	}
@@ -55,19 +68,18 @@ public class User {
 	
 	public void addSosEvent(SosEvent sosEvent) {
 		if (sosEvents == null) {
-			sosEvents = new ArrayList<>();
+			this.sosEvents = new ArrayList<>();
 		}
 		if (!sosEvents.contains(sosEvent)) {
 			sosEvents.add(sosEvent);
-			sosEvent.setUser(this);
+			sosEvent.setContact(this);
 		}
 	}
 	
 	public void removeSosEvent(SosEvent sosEvent) {
 		if (sosEvents != null && sosEvents.contains(sosEvent)) {
 			sosEvents.remove(sosEvent);
-			sosEvent.setUser(null);
+			sosEvent.setContact(null);
 		}
 	}
-	
 }

@@ -74,18 +74,18 @@ CREATE TABLE IF NOT EXISTS `wandersafedb`.`sos_event` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `time` DATETIME NULL,
   `active` TINYINT NULL,
-  `user_username` VARCHAR(45) NOT NULL,
-  `contact_id` INT NOT NULL,
+  `user` VARCHAR(45) NOT NULL,
+  `contact` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_sos_event_user1_idx` (`user_username` ASC),
-  INDEX `fk_sos_event_contact1_idx` (`contact_id` ASC),
+  INDEX `fk_sos_event_user1_idx` (`user` ASC),
+  INDEX `fk_sos_event_contact1_idx` (`contact` ASC),
   CONSTRAINT `fk_sos_event_user1`
-    FOREIGN KEY (`user_username`)
+    FOREIGN KEY (`user`)
     REFERENCES `wandersafedb`.`user` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_sos_event_contact1`
-    FOREIGN KEY (`contact_id`)
+    FOREIGN KEY (`contact`)
     REFERENCES `wandersafedb`.`contact` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
