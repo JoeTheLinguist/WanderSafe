@@ -7,13 +7,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
 
 	@Id
 	private String username;
+	@OneToOne
+	@JoinColumn(name="contact_card_id")
 	private ContactCard contactCard;
 	@JsonIgnore
 	@OneToMany(mappedBy="user")
