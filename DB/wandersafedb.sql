@@ -103,3 +103,47 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `wandersafedb`.* TO 'wand
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `wandersafedb`.`contact_card`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `wandersafedb`;
+INSERT INTO `wandersafedb`.`contact_card` (`id`, `email`, `phone`) VALUES (1, 'wanderer@wanderlust.com', '0015555555555');
+INSERT INTO `wandersafedb`.`contact_card` (`id`, `email`, `phone`) VALUES (2, 'friend@friends.com', '0015555555556');
+INSERT INTO `wandersafedb`.`contact_card` (`id`, `email`, `phone`) VALUES (3, 'familymember@family.com', '0015555555557');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `wandersafedb`.`user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `wandersafedb`;
+INSERT INTO `wandersafedb`.`user` (`username`, `contact_card_id`) VALUES ('wanderer', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `wandersafedb`.`contact`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `wandersafedb`;
+INSERT INTO `wandersafedb`.`contact` (`id`, `name`, `contact_card_id`) VALUES (1, 'friend', 2);
+INSERT INTO `wandersafedb`.`contact` (`id`, `name`, `contact_card_id`) VALUES (2, 'family member', 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `wandersafedb`.`sos_event`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `wandersafedb`;
+INSERT INTO `wandersafedb`.`sos_event` (`id`, `time`, `active`, `user`, `contact`) VALUES (1, '2023-10-26 12:00:00', 1, 'wanderer', 1);
+INSERT INTO `wandersafedb`.`sos_event` (`id`, `time`, `active`, `user`, `contact`) VALUES (2, '2023-10-27 18:00:00', 1, 'wanderer', 2);
+
+COMMIT;
+
